@@ -23,6 +23,10 @@
             margin-bottom: 33px;
             margin-top: 5px;
         }
+        .file p.this_fileName {
+            margin-bottom: 0;
+            color:#000;
+        }
     </style>
 </head>
 <body>
@@ -54,7 +58,7 @@
                     <div class="file">
                         <label for="blogFile" class="blind"></label>
                         <input type="file" id="blogFile" name="blogFile" class="input__style">
-                        <p>현재 파일: <?= $info['blogImgFile'] ?></p>
+                        <p class="this_fileName">현재 파일: <?= $info['blogImgFile'] ?></p>
                         <p>* jpg, gif, png, webp 파일만 넣을 수 있습니다. 이미지 용량은 1MB를 넘길 수 없습니다.</p>
                         <!-- 기존 파일 삭제를 원할 경우 체크박스 추가 -->
                         <p><input type="checkbox" id="deleteExistingImage" name="deleteExistingImage" value="yes"> 기존 파일 삭제</p>

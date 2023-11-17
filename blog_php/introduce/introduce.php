@@ -106,7 +106,7 @@ echo '<script>let introData = ' . json_encode($introData) . ';</script>';
                         <option value="11">인천</option>
                         <option value="12">전남</option>
                         <option value="13">전북</option>
-                        <option value="14">제주</option>
+                        <option value="14">제주도</option>
                         <option value="15">충남</option>
                         <option value="16">충북</option>
                     </select>
@@ -219,7 +219,7 @@ function createPagination(totalItems) {
 
     // 정보 가져오기
     const fetchgGobok = (selectedRegion = '') => {
-        fetch("https://raw.githubusercontent.com/jinhomun/webs2024/main/blog_phpJSON/gobok.json")
+        fetch("../blog_phpJSON/gobok.json")
             .then(res => res.json())
             .then(items => {
                 gobokInfo = items.map((item, index) => {

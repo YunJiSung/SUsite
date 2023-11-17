@@ -333,6 +333,14 @@ fieldset {
     font-size: 15px;
 }
 
+.header_wrap nav ul li.login_head.mobile_only {
+    display: none;
+}
+
+.header_wrap nav ul li.login_head.pc_only {
+    display: flex;
+}
+
 @media (max-width: 1550px) {
     .header_wrap {
         width: 90%;
@@ -399,6 +407,37 @@ fieldset {
         padding: 15px 0;
     }
 
+    .header_wrap nav ul li.login_head.pc_only {
+        display: none;
+    }
+
+    .header_wrap nav ul li.login_head.mobile_only {
+        display: flex;
+    }
+
+    .header_wrap nav ul li.login_head {
+        width: 90%;
+        margin: 0 auto;
+        position: absolute;
+        top: 3%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .header_wrap nav ul li.login_head a {
+        padding: 0;
+    }
+
+    .header_wrap nav ul li.login_head:hover a {
+        background-color: #D2E7FF;
+    }
+
+    .header_wrap nav ul li.login_head:hover a.my_admin {
+        text-decoration: underline;
+        background-color: #D2E7FF;
+        color: #000;
+    }
+
     nav {
         position: fixed;
         width: 50%;
@@ -417,7 +456,8 @@ fieldset {
         align-items: flex-end;
         color: #fff;
         height: 100%;
-        padding-top: 57px;
+        padding-top: 113px;
+        position: relative;
     }
 
     .header_wrap nav ul li {
@@ -445,7 +485,7 @@ fieldset {
     }
 
     #main {
-        margin-top: 54px;
+        margin-top: 53px;
     }
 
     #footer {
@@ -490,5 +530,19 @@ fieldset {
         width: 30px;
         height: 30px;
         font-size: 14px;
+    }
+
+    .header_wrap nav ul li.login_head {
+        top: 7%;
+    }
+
+    .header_wrap nav ul li.login_head a {
+        width: 14px;
+        height: 14px;
+    }
+
+    .header_wrap nav ul li.login_head a.my_admin {
+        font-size: 13px;
+        padding: 0.7rem 0 0.5rem 1rem;
     }
 }

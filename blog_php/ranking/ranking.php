@@ -17,7 +17,7 @@ if ($result->num_rows > 0) {
         $schoolLikes[$row['introId']] = $row['Likes'];
     }
 } else {
-    echo "0 results";
+    // echo "0 results";
 }
 
 // 싫어요 상위 10개의 학교 이름을 가져오는 쿼리
@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
         $schoolDislikes[$row['introId']] = $row['Dislikes'];
     }
 } else {
-    echo "0 results";
+    // echo "0 results";
 }
 
 // 조회수가 높은 상위 10개의 학교 이름을 가져오는 쿼리
@@ -288,6 +288,12 @@ foreach ($schoolViews as $schoolId => $views) {
     <?php include "../include/footer.php" ?>
     <!-- //footer -->
 
+    <script>
+          $("#top").click(function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+    </script>
 
 </body>
 

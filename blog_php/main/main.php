@@ -121,35 +121,46 @@
     $viewNum = 5; // 각 table에 5개의 게시물 표시
     $viewLimitStart = ($viewNum * $page) - $viewNum;
 
-    $sql = "SELECT b.boardId, b.boardTitle, m.youName, b.regTime, b.boardView, b.boardLike 
-            FROM Community b 
+    $sql = "SELECT b.blogId, b.blogTitle, b.blogAuthor, b.blogRegTime, b.blogView, b.blogLike 
+            FROM blogs b 
             JOIN myMembers m ON(b.memberId = m.memberId) 
-            ORDER BY b.boardView DESC, b.boardId DESC
+            ORDER BY b.blogView DESC, b.blogId DESC
             LIMIT {$viewLimitStart}, " . (2 * $viewNum); // 각 table당 10개의 게시물 가져옴
 
     $result = $connect->query($sql);
+    $sudaListCount = $viewLimitStart + 1;
+
+    
 
     if ($result) {
         $count = $result->num_rows;
-        $sudaListCount = 0;
+        $sudaListCount = 1;
 
-        if ($count > 0) {
+        if ($count > 1) {
             while ($info = $result->fetch_array(MYSQLI_ASSOC)) {
                 // 각 suda_list에 5개의 tr로 묶이며, section 안에 묶임
-                if ($sudaListCount % 5 == 0) {
-                    if ($sudaListCount > 0) {
+                if ($sudaListCount % 5 == 1) {
+                    if ($sudaListCount > 1) {
                         echo '</table></div>';
                     }
                     echo '<div class="suda_list"><table>';
+                    echo '<colgroup>
+                        <col style="width: 10%;">
+                        <col>
+                        <col class="col1" style="width: 15%;">
+                        <col class="col2" style="width: 15%;">
+                        <col style="width: 12%;">
+                        <col style="width: 12%;">
+                    </colgroup>';
                 }
 
                 echo "<tr>";
-                echo "<td class='center'>" . $info['boardId'] . "</td>";
-                echo "<td><a href='communityView.php?boardId={$info['boardId']}'>" . $info['boardTitle'] . "</a></td>";
-                echo "<td class='center'>" . $info['youName'] . "</td>";
-                echo "<td class='center'>" . date('Y.m.d', $info['regTime']) . "</td>";
-                echo "<td class='center'><img src='../assets/img/read.svg' alt=''>" . $info['boardView'] . "</td>";
-                echo "<td class='center'><img src='../assets/img/good.svg' alt=''>" . $info['boardLike'] . "</td>";
+                echo "<td class='center'>" . $sudaListCount . "</td>";
+                echo "<td class='t_title'><a href='../cummunity/communityView.php?blogId={$info['blogId']}'>" . $info['blogTitle'] . "</a></td>";
+                echo "<td class='center blogAuthor'>" . $info['blogAuthor'] . "</td>";
+                echo "<td class='center blogDate'>" . date('Y.m.d', $info['blogRegTime']) . "</td>";
+                echo "<td class='center'><img src='../assets/img/read.svg' alt=''>" . $info['blogView'] . "</td>";
+                echo "<td class='center'><img src='../assets/img/good.svg' alt=''>" . $info['blogLike'] . "</td>";
                 echo "</tr>";
 
                 $sudaListCount++;
@@ -161,68 +172,9 @@
             echo "<div class='suda_list'><table><tr><td colspan='5'>게시글이 없습니다.</td></tr></table></div>";
         }
     } else {
-        echo "관리자에게 문의해주세요!!";
+        echo "관리자에게 문의해주세요!!". $connect->error;;
     }
 ?>
-                        <!--
-                        <div class="suda_list">
-                            <table>
-                                <colgroup>
-                                    <col style="width: 5%">
-                                    <col>
-                                    <col style="width: 13%">
-                                    <col style="width: 20%">
-                                    <col style="width: 12%">
-                                    <col style="width: 12%">
-                                </colgroup>
-                                <tr>
-                                    <td class="center">1</td>
-                                    <td><a href="community_view.html">고교복 커뮤니티 수다방입니다.</a></td>
-                                    <td class="center">2023.10.11</td>
-                                    <td class="center"><img src="../assets/img/read.svg" alt="">16</td>
-                                </tr> 
-                            </table>
-                        </div>-->
-                        <!-- <div class="suda_list">
-                            <table>
-                                <colgroup>
-                                    <col style="width: 5%">
-                                    <col>
-                                    <col style="width: 20%">
-                                    <col style="width: 13%">
-                                </colgroup>
-                                <tr>
-                                    <td class="center">1</td>
-                                    <td><a href="community_view.html">고교복 커뮤니티 수다방입니다.</a></td>
-                                    <td class="center">2023.10.11</td>
-                                    <td class="center"><img src="../assets/img/read.svg" alt="">16</td>
-                                </tr>
-                                <tr>
-                                    <td class="center">1</td>
-                                    <td><a href="community_view.html">고교복 커뮤니티 수다방입니다.</a></td>
-                                    <td class="center">2023.10.11</td>
-                                    <td class="center"><img src="../assets/img/read.svg" alt="">16</td>
-                                </tr>
-                                <tr>
-                                    <td class="center">1</td>
-                                    <td><a href="community_view.html">고교복 커뮤니티 수다방입니다.</a></td>
-                                    <td class="center">2023.10.11</td>
-                                    <td class="center"><img src="../assets/img/read.svg" alt="">16</td>
-                                </tr>
-                                <tr>
-                                    <td class="center">1</td>
-                                    <td><a href="community_view.html">고교복 커뮤니티 수다방입니다.</a></td>
-                                    <td class="center">2023.10.11</td>
-                                    <td class="center"><img src="../assets/img/read.svg" alt="">16</td>
-                                </tr>
-                                <tr>
-                                    <td class="center">1</td>
-                                    <td><a href="community_view.html">고교복 커뮤니티 수다방입니다.</a></td>
-                                    <td class="center">2023.10.11</td>
-                                    <td class="center"><img src="../assets/img/read.svg" alt="">16</td>
-                                </tr>
-                            </table>
-                        </div> -->
                     </div>    
                 </div>
             </section>

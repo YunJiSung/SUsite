@@ -236,12 +236,14 @@ body {
 .cont__bottom {
     position: relative;
 }
+
 .detail_page .cont__bottom p.cont_notice {
     font-weight: 100;
     font-size: 14px;
     color: #7a7a7a;
     margin-top: 10px;
 }
+
 .cont__bottom1 {
     display: flex;
     flex-direction: row;
@@ -449,5 +451,16 @@ body {
 
     .cont__bottom__like img {
         margin-top: 1px;
+    }
+
+    .swiper-slide {
+        height: 100% !important;
+    }
+
+    .detail_page .cont__bottom p.cont_notice {
+        font-weight: 100;
+        font-size: 10px;
+        color: #7a7a7a;
+        margin-top: 10px;
     }
 }

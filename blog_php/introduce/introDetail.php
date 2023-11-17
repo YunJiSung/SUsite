@@ -139,7 +139,7 @@ foreach ($commentLikesInfo as $likesInfo) {
             </div>
 
             <div class="container comment_page">
-                <div class="cont__top">COMMENT</div>
+                <div class="cont__top"><span><img src="../assets/img/left.svg" alt=""></span>COMMENT</div>
 
                 <div class="comment_inner">
                 <?php
@@ -557,6 +557,24 @@ if ($commentResult->num_rows == 0) { ?>
     <!-- 교복소개 본문이미지 좋아요 -->
     <script>
 
+    $(document).ready(function() {
+        var introId = '<?php echo $introId; ?>';
+        var liked = localStorage.getItem('liked_intro_' + introId);
+        var disliked = localStorage.getItem('disliked_intro_' + introId);
+
+        if (liked) {
+            // 좋아요 버튼 상태 적용
+            $('#goodImage').attr('src', '../assets/img/good_on.svg');
+            $('header').addClass('whiteHeader');
+            $('body').addClass('liked');
+        } 
+        if (disliked) {
+            // 싫어요 버튼 상태 적용
+            $('#badImage').attr('src', '../assets/img/hate_on.svg');
+            $('header').addClass('whiteHeader');
+            $('body').addClass('liked');
+        } 
+    });
 
         // 좋아요 수 초기화
         function initializeLikeCount() {
@@ -598,6 +616,8 @@ if ($commentResult->num_rows == 0) { ?>
             const whiteHeader = document.querySelector("header");
             const newGoodImageSrc = '../assets/img/good_on.svg';
             const newHateOffImageSrc = '../assets/img/hate.svg';
+            localStorage.setItem('liked_intro_' + introId, true);
+            localStorage.removeItem('disliked_intro_' + introId);
 
             $.ajax({
                 url: 'introLike.php',
@@ -642,6 +662,8 @@ if ($commentResult->num_rows == 0) { ?>
             const whiteHeader = document.querySelector("header");
             const newHateImageSrc = '../assets/img/hate_on.svg';
             const newGoodOffImageSrc = '../assets/img/good.svg';
+            localStorage.setItem('disliked_intro_' + introId, true);
+            localStorage.removeItem('liked_intro_' + introId);
 
             $.ajax({
                 url: 'introLike.php',

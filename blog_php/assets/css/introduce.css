@@ -203,10 +203,12 @@ fieldset {
     width: 222px;
     height: 284px;
 }
+
 .card__inner>div figure .medal_ranking img {
     width: auto;
     height: auto;
 }
+
 .card__inner>div figure:hover>img {
     filter: saturate(0%);
 }
@@ -423,6 +425,38 @@ fieldset {
     }
 }
 
+@media only screen and (max-width: 500px) {
+    .card__inner>div figure img {
+        height: 220px;
+    }
+
+    .card__list__text p.school__name {
+        font-weight: 300;
+        font-size: 16px;
+        color: #000;
+    }
+
+    .card__list__text p.region {
+        font-size: 14px;
+        color: #7d7d7d;
+        font-weight: 100;
+    }
+
+    .card__inner>div figure .medal_ranking img {
+        width: 55px;
+        height: auto;
+    }
+
+    .medal_ranking span {
+        position: absolute;
+        top: 42px;
+        width: 100%;
+        text-align: center;
+        left: 2.8px;
+        font-size: 1rem;
+    }
+}
+
 @media (max-width: 400px) {
     .board__search .board__select input {
         font-size: 15px;
@@ -436,5 +470,29 @@ fieldset {
 
     .tab_menu {
         margin: 0 auto;
+    }
+
+    .card__list__text p.region {
+        font-size: 13px;
+    }
+
+    .card__list__text p.school__name {
+        font-size: 14px;
+    }
+
+    .card__inner>div figure img {
+        height: 230px;
+    }
+
+    .view-count img,
+    .comment-count img {
+        width: 13px;
+        margin-right: 4px;
+        margin-top: -1px;
+    }
+
+    .view-count,
+    .comment-count {
+        font-size: 11px;
     }
 }

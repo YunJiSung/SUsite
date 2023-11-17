@@ -39,6 +39,29 @@
         .join__form.join__form__cont {
             margin: 0;
         }
+        aside.mypage__aside {
+                display: block;
+            }
+        @media only screen and (max-width: 768px) {
+            aside.mypage__aside {
+                display: none;
+            }
+            .mypage__inner h2 {
+                font-size: 2rem;
+            }
+            .mypage__inner > p {
+                width: 90%;
+                margin: 0 auto;
+            }
+            .agree__text {
+                font-size: 13px;
+                overflow: auto;
+            }
+            .join__form div.check label {
+                justify-content: flex-start;
+            }
+
+        }
     </style>
     <!-- CSS -->
     <?php include "../include/head.php" ?>
