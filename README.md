@@ -1,5 +1,5 @@
 # Team-Project-blogSite
-![image](https://github.com/uUZINN/Team-blogSite/assets/89904583/56e47354-7e0d-4df4-a87d-9c444f9c7dff)
+![shcoolmain](https://github.com/YunJiSung/SUsite/assets/144635669/7a39ec5e-1578-44e7-90f6-68b184c43147)
 
 ## Go!교복
 팀플 블로그 사이트 만들기<br>
